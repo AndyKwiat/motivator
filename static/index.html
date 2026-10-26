@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light only">
+<title>Comeback Club</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦶</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #22203f;
+    --paper: #ffffff;
+    --soft: #f6f4ff;
+    --yellow: #ffd23f;
+    --pink: #ff5d8f;
+    --teal: #2ec4a6;
+    --blue: #4d9de0;
+    --orange: #ff8c42;
+    --purple: #9b5de5;
+    --muted: #6d6a8a;
+    --line: 4px solid var(--ink);
+    --pop: 0 6px 0 var(--ink);
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--paper); color: var(--ink); margin: 0; }
+  body {
+    font-family: "Fredoka", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 16px 16px 80px; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  svg { display: block; }
+
+  /* ---------- header ---------- */
+  header { display: flex; align-items: center; gap: 12px; margin: 4px 0 18px; }
+  header .mascot { width: 96px; flex: none; animation: bob 2.6s ease-in-out infinite; transform-origin: 50% 90%; }
+  header h1 { font-size: clamp(30px, 8vw, 46px); line-height: 1; margin: 0; font-weight: 700; letter-spacing: -.5px; }
+  header h1 span { color: var(--pink); }
+  header p { margin: 6px 0 0; color: var(--muted); font-size: 17px; font-weight: 500; }
+  header .sun { width: 64px; margin-left: auto; flex: none; animation: spin 18s linear infinite; }
+  @keyframes bob { 0%,100% { transform: rotate(-4deg) translateY(0); } 50% { transform: rotate(4deg) translateY(-6px); } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .card {
+    background: var(--paper);
+    border: var(--line);
+    border-radius: 28px;
+    box-shadow: var(--pop);
+    padding: 20px;
+    margin: 0 0 22px;
+    position: relative;
+  }
+
+  /* ---------- countdown ---------- */
+  .countdown { background: var(--yellow); overflow: hidden; }
+  .cd-top { display: flex; align-items: center; gap: 14px; }
+  .cd-num {
+    font-size: clamp(84px, 26vw, 140px); line-height: .85; font-weight: 700;
+    color: var(--paper); -webkit-text-stroke: 5px var(--ink); paint-order: stroke fill;
+    text-shadow: 0 7px 0 var(--ink);
+  }
+  .cd-label { font-size: clamp(24px, 6.5vw, 34px); font-weight: 700; line-height: 1.05; }
+  .cd-label small { display: block; font-size: 17px; font-weight: 500; margin-top: 6px; }
+  .cd-tick {
+    display: flex; gap: 8px; margin: 18px 0 6px;
+  }
+  .cd-tick div {
+    background: var(--paper); border: var(--line); border-radius: 16px; padding: 6px 2px; min-width: 0;
+    text-align: center; box-shadow: 0 4px 0 var(--ink); flex: 1;
+  }
+  .cd-tick b { display: block; font-size: clamp(22px, 6.5vw, 30px); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .cd-tick span { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); }
+
+  .road { position: relative; margin: 52px 4px 8px; height: 34px; }
+  .road-track {
+    position: absolute; inset: 0; border: var(--line); border-radius: 20px; background: var(--paper); overflow: hidden;
+  }
+  .road-fill {
+    height: 100%; border-radius: 14px 0 0 14px;
+    background: repeating-linear-gradient(-45deg, var(--pink) 0 14px, #ff7ea6 14px 28px);
+    border-right: var(--line);
+    animation: slide 1.2s linear infinite; background-size: 40px 40px;
+  }
+  @keyframes slide { to { background-position: 40px 0; } }
+  .road-walker { position: absolute; top: -50px; width: 52px; transform: translateX(-50%); transition: left 1s; }
+  .road-walker svg { animation: hop .9s ease-in-out infinite; }
+  @keyframes hop { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-6px) rotate(3deg); } }
+  .road-finish { position: absolute; right: -6px; top: -46px; width: 54px; }
+  .road-meta { display: flex; justify-content: space-between; font-weight: 600; font-size: 16px; margin-top: 10px; }
+
+  /* ---------- sticker calendar ---------- */
+  .cal-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; gap: 10px; }
+  .cal-head h2 { margin: 0; font-size: 24px; }
+  .cal-head span { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .dot {
+    aspect-ratio: 1; border-radius: 50%; border: 3px solid var(--ink); background: var(--paper);
+    display: grid; place-items: center; font-size: clamp(11px, 3vw, 15px); font-weight: 700; padding: 0;
+    transition: transform .15s;
+  }
+  .dot:not(:disabled):active { transform: scale(.9); }
+  .dot.done { background: var(--yellow); }
+  .dot.part { background: linear-gradient(90deg, #bdf3e6 50%, var(--paper) 50%); }
+  .dot.todo { background: #ffe1ea; }
+  .dot.future { border-style: dashed; border-color: #c9c6dd; color: #c9c6dd; cursor: default; }
+  .dot.goal { background: var(--teal); border-style: solid; border-color: var(--ink); color: var(--ink); }
+  .dot.viewing { outline: 4px solid var(--pink); outline-offset: 2px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px; font-size: 15px; color: var(--muted); font-weight: 500; }
+  .legend i { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--ink); vertical-align: -2px; margin-right: 4px; }
+
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 0 0 22px; }
+  .stat { border: var(--line); border-radius: 20px; padding: 10px 6px; text-align: center; box-shadow: 0 4px 0 var(--ink); }
+  .stat b { display: block; font-size: 32px; line-height: 1.1; }
+  .stat span { font-size: 14px; font-weight: 600; }
+  .stat:nth-child(1) { background: #d9f7f0; }
+  .stat:nth-child(2) { background: #ffe1ea; }
+
+  /* ---------- day nav ---------- */
+  .banner {
+    background: var(--purple); color: var(--paper); border: var(--line); border-radius: 22px; box-shadow: var(--pop);
+    padding: 14px 18px; font-size: 20px; font-weight: 600; margin: 0 0 18px; display: flex; gap: 12px; align-items: center;
+  }
+  .banner .big { font-size: 34px; }
+  .daynav { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; position: sticky; top: 8px; z-index: 5; }
+  .daynav .mid {
+    flex: 1; text-align: center; background: var(--paper); border: var(--line); border-radius: 22px; padding: 8px 6px;
+    box-shadow: 0 4px 0 var(--ink);
+  }
+  .daynav .mid b { display: block; font-size: clamp(24px, 6.5vw, 30px); line-height: 1.1; }
+  .daynav .mid span { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .arrow {
+    width: 64px; height: 64px; flex: none; border-radius: 50%; border: var(--line); background: var(--teal);
+    font-size: 30px; font-weight: 700; box-shadow: 0 5px 0 var(--ink); display: grid; place-items: center;
+    transition: transform .1s, box-shadow .1s;
+  }
+  .arrow:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 1px 0 var(--ink); }
+  .arrow:disabled { background: #eceaf5; color: #b3b0c9; border-color: #c9c6dd; box-shadow: 0 5px 0 #c9c6dd; cursor: not-allowed; }
+
+  /* ---------- quotes ---------- */
+  .quote { padding: 24px 22px 22px; overflow: hidden; transition: transform .3s; }
+  .quote.g { background: #fff1e4; }
+  .quote.k { background: #e2f3ff; }
+  .quote.w { background: #efe7ff; }
+  .tag {
+    display: inline-flex; align-items: center; gap: 8px; border: 3px solid var(--ink); border-radius: 999px;
+    padding: 4px 14px; font-weight: 700; font-size: 16px; background: var(--paper); transform: rotate(-2deg);
+  }
+  .tag svg { width: 34px; height: 34px; }
+  .quote blockquote {
+    margin: 18px 0 12px; font-size: clamp(27px, 7.2vw, 40px); line-height: 1.22; font-weight: 600; letter-spacing: -.2px;
+  }
+  .quote blockquote::before { content: "“"; color: var(--pink); font-size: 1.4em; line-height: 0; vertical-align: -.35em; margin-right: 2px; }
+  .quote .who { font-size: 21px; font-weight: 500; color: var(--muted); }
+  .quote .who::before { content: "— "; }
+
+  .bigbtn {
+    display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; margin-top: 20px;
+    border: var(--line); border-radius: 22px; padding: 16px; font-size: 26px; font-weight: 700;
+    box-shadow: 0 6px 0 var(--ink); transition: transform .1s, box-shadow .1s; background: var(--teal);
+  }
+  .bigbtn:active { transform: translateY(5px); box-shadow: 0 1px 0 var(--ink); }
+  .bigbtn.pink { background: var(--pink); color: var(--paper); }
+  .bigbtn.yellow { background: var(--yellow); }
+
+  .stamp {
+    display: flex; align-items: center; gap: 12px; margin-top: 18px; padding: 10px 14px; border-radius: 18px;
+    background: rgba(255,255,255,.75); border: 3px dashed var(--ink); font-weight: 600; font-size: 17px;
+  }
+  .stamp .seal {
+    flex: none; width: 52px; height: 52px; border-radius: 50%; background: var(--teal); border: 3px solid var(--ink);
+    display: grid; place-items: center; font-size: 28px; transform: rotate(-12deg);
+  }
+  .stamp small { color: var(--muted); font-weight: 500; font-size: 16px; }
+  .pop-in { animation: popin .45s cubic-bezier(.3,1.6,.5,1); }
+  @keyframes popin { from { transform: scale(.4) rotate(-10deg); opacity: 0; } to { transform: none; opacity: 1; } }
+
+  .grateful { background: #fff0f5; text-align: center; }
+  .grateful h3 { margin: 0; font-size: clamp(26px, 7vw, 34px); }
+  .grateful p { margin: 8px 0 0; font-size: 19px; color: var(--muted); font-weight: 500; }
+  .grateful .heart { width: 110px; margin: 0 auto 6px; }
+  .grateful .heart svg { animation: beat 1.2s ease-in-out infinite; }
+  @keyframes beat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.12); } 30% { transform: scale(1); } 45% { transform: scale(1.08); } }
+  .grateful .bigbtn { font-size: 32px; padding: 22px; }
+
+  .complete { background: #dcfaf2; text-align: center; overflow: hidden; }
+  .complete .rainbow { width: 200px; margin: 0 auto; }
+  .complete h3 { margin: 4px 0 6px; font-size: clamp(30px, 8vw, 40px); }
+  .complete p { margin: 0; font-size: 20px; font-weight: 500; }
+
+  .sticker { position: absolute; width: 74px; right: -8px; top: -26px; transform: rotate(12deg); }
+  .daypic { width: 110px; margin: -6px auto 14px; }
+  .loading { text-align: center; padding: 80px 0; font-size: 26px; font-weight: 600; }
+  .loading svg { width: 120px; margin: 0 auto 12px; animation: bob 1s ease-in-out infinite; }
+
+  .confetti { position: fixed; pointer-events: none; z-index: 50; font-size: 26px; will-change: transform, opacity; }
+
+  @media (min-width: 760px) {
+    .wrap { padding-top: 28px; }
+    header .mascot { width: 120px; }
+    header .sun { width: 84px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="loading" id="loading"></div>
+</div>
+
+<script>
+// ---------- cartoon art (inline SVG) ----------
+const INK = '#22203f';
+const ART = {
+  aircast: `<svg viewBox="0 0 210 240" aria-label="Cartoon Aircast boot">
+    <path d="M150 12 l6 -10 M168 22 l10 -6 M172 42 h12" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>
+    <path d="M42 196 H198 Q198 224 170 226 H72 Q42 224 42 196 Z" fill="#4a4870" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M70 212 h12 M98 214 h12 M126 214 h12 M154 212 h12" stroke="#8d8bb5" stroke-width="5" stroke-linecap="round"/>
+    <path d="M72 15 H113 Q135 15 135 37 V136 Q180 140 191 170 Q195 182 192 198 H50 V37 Q50 15 72 15 Z" fill="#eef2f8" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M62 30 V188" stroke="#d3dae6" stroke-width="6" stroke-linecap="round"/>
+    <rect x="42" y="26" width="102" height="20" rx="7" fill="#4d9de0" stroke="${INK}" stroke-width="5"/>
+    <rect x="42" y="118" width="102" height="20" rx="7" fill="#4d9de0" stroke="${INK}" stroke-width="5"/>
+    <rect x="124" y="150" width="62" height="18" rx="7" fill="#4d9de0" stroke="${INK}" stroke-width="5" transform="rotate(20 155 159)"/>
+    <circle cx="146" cy="78" r="11" fill="#ff5d8f" stroke="${INK}" stroke-width="5"/>
+    <path d="M135 78 h-6" stroke="${INK}" stroke-width="5"/>
+    <circle cx="78" cy="72" r="8" fill="${INK}"/><circle cx="108" cy="72" r="8" fill="${INK}"/>
+    <circle cx="81" cy="69" r="3" fill="#fff"/><circle cx="111" cy="69" r="3" fill="#fff"/>
+    <ellipse cx="68" cy="90" rx="8" ry="5" fill="#ffadc6"/><ellipse cx="118" cy="90" rx="8" ry="5" fill="#ffadc6"/>
+    <path d="M80 88 Q93 104 106 88" fill="#ff8c42" stroke="${INK}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`,
+  sun: `<svg viewBox="0 0 120 120" aria-hidden="true">
+    <g stroke="${INK}" stroke-width="4" stroke-linejoin="round" fill="#ffd23f">
+      ${Array.from({length: 10}, (_, i) => `<path d="M60 4 L67 20 H53 Z" transform="rotate(${i * 36} 60 60)"/>`).join('')}
+      <circle cx="60" cy="60" r="34"/>
+    </g>
+    <path d="M36 52 H84" stroke="${INK}" stroke-width="4"/>
+    <rect x="38" y="48" width="18" height="13" rx="5" fill="${INK}"/><rect x="64" y="48" width="18" height="13" rx="5" fill="${INK}"/>
+    <path d="M46 72 Q60 84 74 72" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>
+  </svg>`,
+  sneaker: `<svg viewBox="0 0 140 100" aria-label="Running shoe">
+    <path d="M6 30 h20 M2 46 h18 M8 62 h14" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>
+    <path d="M30 70 V36 Q30 26 40 26 Q58 26 66 40 Q74 52 96 54 Q130 58 132 76 V80 H30 Z" fill="#ff5d8f" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M28 80 H134 Q134 92 122 92 H40 Q28 92 28 80 Z" fill="#fff" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M50 66 Q80 50 112 66" fill="none" stroke="#ffd23f" stroke-width="7" stroke-linecap="round"/>
+    <path d="M58 38 l8 -4 M64 46 l9 -4 M70 53 l9 -3" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>
+  </svg>`,
+  flame: `<svg viewBox="0 0 60 60" aria-hidden="true">
+    <path d="M30 4 C40 18 50 24 48 38 C46 52 36 56 30 56 C22 56 12 50 12 38 C12 28 20 24 22 14 C26 20 28 24 30 26 C32 18 30 10 30 4 Z" fill="#ff8c42" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M30 30 C36 38 40 42 38 48 C36 53 24 53 22 48 C20 42 26 38 30 30 Z" fill="#ffd23f" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>
+  </svg>`,
+  rainbow: `<svg viewBox="0 0 200 110" aria-label="Rainbow">
+    <g fill="none" stroke-linecap="round">
+      <path d="M30 96 A70 70 0 0 1 170 96" stroke="${INK}" stroke-width="44"/>
+      <path d="M30 96 A70 70 0 0 1 170 96" stroke="#ff5d8f" stroke-width="36"/>
+      <path d="M38 96 A62 62 0 0 1 162 96" stroke="#ffd23f" stroke-width="12"/>
+      <path d="M50 96 A50 50 0 0 1 150 96" stroke="#2ec4a6" stroke-width="12"/>
+      <path d="M60 96 A40 40 0 0 1 140 96" stroke="#4d9de0" stroke-width="8"/>
+    </g>
+    <g fill="#fff" stroke="${INK}" stroke-width="4">
+      <path d="M8 104 Q4 88 20 86 Q24 74 38 80 Q50 76 52 90 Q62 94 56 104 Z"/>
+      <path d="M144 104 Q138 90 152 86 Q158 74 172 80 Q186 78 186 92 Q196 96 190 104 Z"/>
+    </g>
+  </svg>`,
+  owl: `<svg viewBox="0 0 60 60" aria-hidden="true">
+    <path d="M14 14 L20 22 M46 14 L40 22" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M12 30 Q12 14 30 14 Q48 14 48 30 V44 Q48 56 30 56 Q12 56 12 44 Z" fill="#9b5de5" stroke="${INK}" stroke-width="4"/>
+    <circle cx="22" cy="30" r="8" fill="#fff" stroke="${INK}" stroke-width="3"/><circle cx="38" cy="30" r="8" fill="#fff" stroke="${INK}" stroke-width="3"/>
+    <circle cx="23" cy="30" r="3.5" fill="${INK}"/><circle cx="37" cy="30" r="3.5" fill="${INK}"/>
+    <path d="M27 38 L30 43 L33 38 Z" fill="#ffd23f" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M22 48 Q30 52 38 48" fill="none" stroke="#e6dcff" stroke-width="3" stroke-linecap="round"/>
+  </svg>`,
+  cloud: `<svg viewBox="0 0 60 60" aria-hidden="true">
+    <path d="M10 44 Q4 34 14 30 Q14 18 28 20 Q34 10 44 18 Q56 20 52 32 Q58 40 50 46 Z" fill="#fff" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="24" cy="32" r="3" fill="${INK}"/><circle cx="38" cy="32" r="3" fill="${INK}"/>
+    <path d="M26 38 Q31 42 36 38" fill="none" stroke="${INK}" stroke-width="3" stroke-linecap="round"/>
+    <path d="M20 52 l-3 6 M32 52 l-3 6 M44 52 l-3 6" stroke="#4d9de0" stroke-width="3" stroke-linecap="round"/>
+  </svg>`,
+  heart: `<svg viewBox="0 0 120 110" aria-hidden="true">
+    <path d="M60 100 C20 74 6 52 10 32 C14 12 40 4 60 26 C80 4 106 12 110 32 C114 52 100 74 60 100 Z" fill="#ff5d8f" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M28 30 Q32 20 42 20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="46" cy="50" r="6" fill="${INK}"/><circle cx="74" cy="50" r="6" fill="${INK}"/>
+    <ellipse cx="38" cy="62" rx="6" ry="4" fill="#ffadc6"/><ellipse cx="82" cy="62" rx="6" ry="4" fill="#ffadc6"/>
+    <path d="M50 62 Q60 72 70 62" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>
+  </svg>`,
+  star: `<svg viewBox="0 0 100 100" aria-hidden="true">
+    <path d="M50 6 L62 36 L94 38 L69 58 L77 90 L50 72 L23 90 L31 58 L6 38 L38 36 Z" fill="#ffd23f" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="40" cy="50" r="4.5" fill="${INK}"/><circle cx="60" cy="50" r="4.5" fill="${INK}"/>
+    <path d="M42 60 Q50 68 58 60" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>
+  </svg>`,
+  icecream: `<svg viewBox="0 0 100 120" aria-hidden="true">
+    <path d="M30 56 L50 114 L70 56 Z" fill="#ffb86b" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M38 66 L62 82 M62 66 L42 92" stroke="${INK}" stroke-width="3"/>
+    <path d="M24 58 Q16 40 32 32 Q34 12 52 14 Q70 12 70 32 Q86 40 76 58 Z" fill="#ffadc6" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="50" cy="10" r="8" fill="#ff5d8f" stroke="${INK}" stroke-width="4"/>
+    <circle cx="42" cy="40" r="4" fill="${INK}"/><circle cx="60" cy="40" r="4" fill="${INK}"/>
+    <path d="M44 48 Q51 54 58 48" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>
+  </svg>`,
+  dog: `<svg viewBox="0 0 120 110" aria-hidden="true">
+    <path d="M22 30 Q6 34 10 64 Q22 66 30 50 Z M98 30 Q114 34 110 64 Q98 66 90 50 Z" fill="#a0673d" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M26 46 Q26 18 60 18 Q94 18 94 46 V66 Q94 98 60 98 Q26 98 26 66 Z" fill="#f2c48d" stroke="${INK}" stroke-width="5"/>
+    <circle cx="46" cy="54" r="6" fill="${INK}"/><circle cx="74" cy="54" r="6" fill="${INK}"/>
+    <circle cx="48" cy="52" r="2" fill="#fff"/><circle cx="76" cy="52" r="2" fill="#fff"/>
+    <ellipse cx="60" cy="70" rx="9" ry="6" fill="${INK}"/>
+    <path d="M60 76 V82 M50 82 Q60 90 70 82" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>
+    <path d="M56 86 Q60 100 66 86" fill="#ff5d8f" stroke="${INK}" stroke-width="3"/>
+  </svg>`,
+  balloon: `<svg viewBox="0 0 80 130" aria-hidden="true">
+    <path d="M40 92 Q30 108 44 118 Q54 126 42 130" fill="none" stroke="${INK}" stroke-width="3"/>
+    <path d="M40 92 C10 88 4 56 10 38 C16 16 64 16 70 38 C76 56 70 88 40 92 Z" fill="#2ec4a6" stroke="${INK}" stroke-width="5"/>
+    <path d="M34 92 L40 100 L46 92 Z" fill="#2ec4a6" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M22 36 Q26 28 34 28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="31" cy="54" r="4" fill="${INK}"/><circle cx="49" cy="54" r="4" fill="${INK}"/>
+    <path d="M32 64 Q40 72 48 64" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>
+  </svg>`,
+  trophy: `<svg viewBox="0 0 100 110" aria-hidden="true">
+    <path d="M26 20 H10 Q8 46 32 50 M74 20 H90 Q92 46 68 50" fill="none" stroke="${INK}" stroke-width="5"/>
+    <path d="M24 10 H76 V36 Q76 64 50 66 Q24 64 24 36 Z" fill="#ffd23f" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M44 66 H56 V82 H44 Z" fill="#ffd23f" stroke="${INK}" stroke-width="5"/>
+    <rect x="28" y="82" width="44" height="16" rx="5" fill="#9b5de5" stroke="${INK}" stroke-width="5"/>
+    <circle cx="41" cy="34" r="4" fill="${INK}"/><circle cx="59" cy="34" r="4" fill="${INK}"/>
+    <path d="M42 44 Q50 52 58 44" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>
+  </svg>`,
+};
+const CATS = {
+  g: { label: 'GET MOVING', art: 'flame' },
+  k: { label: "IT'LL BE OK", art: 'cloud' },
+  w: { label: 'TIMELESS WISDOM', art: 'owl' },
+};
+const DAY_PICS = ['sun', 'star', 'icecream', 'dog', 'balloon', 'rainbow', 'sneaker'];
+const SLOTS = ['q0', 'q1', 'q2'];
+const ALL = [...SLOTS, 'grateful'];
+
+// ---------- state ----------
+const tz = -new Date().getTimezoneOffset();
+let S = null;          // server state
+let view = 1;          // day number being viewed
+let tickTimer = null;
+
+const $ = (sel) => document.querySelector(sel);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const parseDay = (s) => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+const fmtDate = (s) => parseDay(s).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+const fmtWhen = (iso) => new Date(iso).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+const pick = (arr, n) => arr[((n % arr.length) + arr.length) % arr.length];
+const dayObj = (n) => S.days[n - 1];
+const isDone = (d) => ALL.every((k) => d.acks[k]);
+const ackCount = (d) => ALL.filter((k) => d.acks[k]).length;
+
+function firstUnfinished() {
+  const d = S.days.find((d) => !isDone(d));
+  return d ? d.day : S.today;
+}
+
+async function load() {
+  $('#loading').innerHTML = ART.aircast + 'Warming up the boot…';
+  const r = await fetch(`/api/state?tz=${tz}`, { cache: 'no-store' });
+  if (!r.ok) throw new Error(await r.text());
+  S = await r.json();
+  view = firstUnfinished();
+  render();
+  if (!tickTimer) tickTimer = setInterval(tick, 1000);
+}
+
+async function ack(kind, btn) {
+  const d = dayObj(view);
+  if (d.acks[kind]) return;
+  const rect = btn.getBoundingClientRect();
+  btn.disabled = true;
+  try {
+    const r = await fetch('/api/ack', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ day: view, kind, tz }),
+    });
+    if (!r.ok) throw new Error(await r.text());
+    const res = await r.json();
+    const wasDone = isDone(d);
+    d.acks = res.acks;
+    confetti(rect.left + rect.width / 2, rect.top + rect.height / 2, kind === 'grateful' ? ['💖', '💛', '🙏', '✨'] : ['⭐', '🎉', '✨', '💪']);
+    renderDay(kind);
+    renderTop();
+    if (!wasDone && isDone(d)) {
+      setTimeout(() => { confetti(innerWidth / 2, innerHeight / 3, ['🎉', '🏆', '⭐', '🥳', '👟'], 60); }, 250);
+      setTimeout(() => $('#complete')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
+    }
+  } catch (e) {
+    btn.disabled = false;
+    alert('Oops, that did not save: ' + e.message);
+  }
+}
+
+function go(n) {
+  if (n < 1 || n > S.today) return;
+  view = n;
+  renderDay();
+  renderTop();
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+// ---------- render ----------
+function render() {
+  $('#app').innerHTML = `
+    <header>
+      <div class="mascot">${ART.aircast}</div>
+      <div>
+        <h1>Comeback <span>Club</span></h1>
+        <p>Healing one day at a time 🦶✨</p>
+      </div>
+      <div class="sun">${ART.sun}</div>
+    </header>
+    <section class="card countdown" id="countdown"></section>
+    <div class="stats" id="stats"></div>
+    <div id="banner"></div>
+    <nav class="daynav" id="daynav"></nav>
+    <main id="day"></main>
+    <section class="card" id="calendar"></section>
+`;
+  renderTop();
+  renderDay();
+  tick();
+}
+
+function renderTop() {
+  const total = S.total_days;
+  const goal = parseDay(S.goal);
+  const todayDate = new Date(); todayDate.setHours(0, 0, 0, 0);
+  const daysLeft = Math.max(0, Math.round((goal - todayDate) / 86400000));
+  const pct = Math.min(100, Math.max(0, ((S.today - 1) / (total - 1)) * 100));
+
+  $('#countdown').innerHTML = `
+    <div class="cd-top">
+      <div class="cd-num">${daysLeft}</div>
+      <div class="cd-label">${daysLeft === 0 ? 'TODAY IS THE DAY! 🎉' : daysLeft === 1 ? 'day to go!' : 'days to go!'}
+        <small>until ${goal.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })} 👟</small>
+      </div>
+    </div>
+    <div class="cd-tick" id="tick"></div>
+    <div class="road" aria-label="${Math.round(pct)}% of the way there">
+      <div class="road-track"><div class="road-fill" style="width:${pct}%"></div></div>
+      <div class="road-walker" style="left:${Math.max(4, Math.min(88, pct))}%">${ART.aircast}</div>
+      <div class="road-finish">${ART.sneaker}</div>
+    </div>
+    <div class="road-meta"><span>Day ${S.today} of ${total}</span><span>${Math.round(pct)}% there!</span></div>`;
+
+  const read = S.days.reduce((n, d) => n + SLOTS.filter((k) => d.acks[k]).length, 0);
+  const grateful = S.days.filter((d) => d.acks.grateful).length;
+  $('#stats').innerHTML = `
+    <div class="stat"><b>${read}</b><span>📖<br>quotes read</span></div>
+    <div class="stat"><b>${grateful}</b><span>💖<br>grateful days</span></div>`;
+
+  const behind = S.days.filter((d) => d.day < S.today && !isDone(d)).length;
+  $('#banner').innerHTML = behind > 0 && view < S.today
+    ? `<div class="banner"><span class="big">🏃</span><span>Catch-up mode! ${behind} earlier day${behind > 1 ? 's' : ''} still waiting for you. You've got this!</span></div>`
+    : '';
+
+  const d = dayObj(view);
+  $('#daynav').innerHTML = `
+    <button class="arrow" aria-label="Previous day" ${view <= 1 ? 'disabled' : ''} onclick="go(view-1)">◀</button>
+    <div class="mid"><b>Day ${view}${view === S.today ? ' · Today' : ''}</b><span>${fmtDate(d.date)} · ${ackCount(d)}/4 done</span></div>
+    <button class="arrow" aria-label="${view >= S.today ? 'Tomorrow is locked' : 'Next day'}" ${view >= S.today ? 'disabled' : ''} onclick="go(view+1)">${view >= S.today ? '🔒' : '▶'}</button>`;
+
+  let cells = '';
+  for (let n = 1; n <= total; n++) {
+    let cls = 'future', label = n;
+    if (n <= S.today) {
+      const dd = dayObj(n);
+      cls = isDone(dd) ? 'done' : ackCount(dd) > 0 ? 'part' : 'todo';
+      if (isDone(dd)) label = '⭐';
+    }
+    if (n === total) { cls += ' goal'; label = '👟'; }
+    if (n === view) cls += ' viewing';
+    cells += `<button class="dot ${cls}" ${n > S.today ? 'disabled' : ''} onclick="go(${n})" aria-label="Day ${n}">${label}</button>`;
+  }
+  const doneDays = S.days.filter(isDone).length;
+  $('#calendar').innerHTML = `
+    <div class="cal-head"><h2>Sticker chart 🌟</h2><span>${doneDays} of ${total} days</span></div>
+    <div class="cal">${cells}</div>
+    <div class="legend">
+      <span><i style="background:var(--yellow)"></i>all done</span>
+      <span><i style="background:linear-gradient(90deg,#bdf3e6 50%,#fff 50%)"></i>started</span>
+      <span><i style="background:#ffe1ea"></i>waiting</span>
+      <span><i style="border-style:dashed;border-color:#c9c6dd"></i>locked</span>
+    </div>`;
+  tick();
+}
+
+function renderDay(justAcked) {
+  const d = dayObj(view);
+  const quotes = d.quotes.map((q, i) => {
+    const kind = SLOTS[i];
+    const at = d.acks[kind];
+    const c = CATS[q.cat] || CATS.w;
+    return `
+      <article class="card quote ${q.cat}">
+        <span class="tag" aria-label="${c.label}">${ART[c.art]}</span>
+        <blockquote>${esc(q.text)}</blockquote>
+        <div class="who">${esc(q.author)}</div>
+        ${at
+          ? `<div class="stamp ${justAcked === kind ? 'pop-in' : ''}"><span class="seal">✓</span><small>Read ${fmtWhen(at)}</small></div>`
+          : `<button class="bigbtn" onclick="ack('${kind}', this)">👍 I read it!</button>`}
+      </article>`;
+  }).join('');
+
+  const gAt = d.acks.grateful;
+  const grateful = `
+    <section class="card grateful">
+      <div class="heart">${ART.heart}</div>
+      ${gAt
+        ? `<div class="${justAcked === 'grateful' ? 'pop-in' : ''}">
+             <p>Tapped ${fmtWhen(gAt)}</p>
+           </div>`
+        : `<h3>One thing you're thankful for?</h3>
+           <p>Think of it, smile, then tap.</p>
+           <button class="bigbtn pink" onclick="ack('grateful', this)">🙏 I'm grateful</button>`}
+    </section>`;
+
+  let complete = '';
+  if (isDone(d)) {
+    const nextOpen = S.days.find((x) => x.day > view && !isDone(x));
+    complete = `
+      <section class="card complete ${justAcked ? 'pop-in' : ''}" id="complete">
+        <div class="rainbow">${ART.rainbow}</div>
+        <h3>Day ${view} complete! 🎉</h3>
+        ${nextOpen
+          ? `<p>Day ${nextOpen.day} is ready for you.</p><button class="bigbtn yellow" onclick="go(${nextOpen.day})">Next up: Day ${nextOpen.day} ▶</button>`
+          : view === S.today || !S.days.some((x) => !isDone(x))
+            ? `<p>All caught up! 🌈 New quotes unlock in <b id="unlock"></b>.</p>`
+            : ''}
+      </section>`;
+  }
+
+  const finale = view === S.total_days
+    ? `<section class="card complete"><div class="daypic">${ART.trophy}</div><h3>YOU MADE IT! 🏆👟</h3><p>Three months of showing up. Lace up those sneakers!</p></section>`
+    : '';
+
+  $('#day').innerHTML = `
+    <div class="daypic">${ART[pick(DAY_PICS, view)]}</div>
+    ${finale}${quotes}${grateful}${complete}`;
+  tick();
+}
+
+function tick() {
+  if (!S) return;
+  const now = new Date();
+  const goal = parseDay(S.goal);
+  let ms = Math.max(0, goal - now);
+  const d = Math.floor(ms / 86400000); ms -= d * 86400000;
+  const h = Math.floor(ms / 3600000); ms -= h * 3600000;
+  const m = Math.floor(ms / 60000); ms -= m * 60000;
+  const s = Math.floor(ms / 1000);
+  const el = $('#tick');
+  if (el) el.innerHTML = [[d, 'days'], [h, 'hours'], [m, 'mins'], [s, 'secs']]
+    .map(([v, l]) => `<div><b>${String(v).padStart(2, '0')}</b><span>${l}</span></div>`).join('');
+
+  const tomorrow = new Date(now); tomorrow.setHours(24, 0, 0, 0);
+  const left = tomorrow - now;
+  const u = $('#unlock');
+  if (u) u.textContent = `${Math.floor(left / 3600000)}h ${Math.floor(left / 60000) % 60}m`;
+
+  // A new day started while the page was open: refresh so the new quotes show up.
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  const last = S.days[S.days.length - 1];
+  if (last && todayStr > last.date && S.today < S.total_days && !tick.reloading) {
+    tick.reloading = true;
+    load().finally(() => { tick.reloading = false; });
+  }
+}
+
+function confetti(x, y, chars, n = 22) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  for (let i = 0; i < n; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti';
+    el.textContent = chars[i % chars.length];
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+    document.body.appendChild(el);
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 80 + Math.random() * 160;
+    const dx = Math.cos(angle) * dist, dy = Math.sin(angle) * dist - 80;
+    el.animate([
+      { transform: 'translate(-50%,-50%) scale(.4)', opacity: 1 },
+      { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) rotate(${Math.random() * 360}deg) scale(1.1)`, opacity: 1, offset: .6 },
+      { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy + 120}px)) rotate(${Math.random() * 720}deg) scale(.8)`, opacity: 0 },
+    ], { duration: 1100 + Math.random() * 500, easing: 'cubic-bezier(.2,.7,.4,1)' }).onfinish = () => el.remove();
+  }
+}
+
+load().catch((e) => {
+  $('#app').innerHTML = `<div class="loading">${ART.cloud}Couldn't load today's quotes.<br><small>${esc(e.message)}</small><br><button class="bigbtn" onclick="location.reload()">Try again</button></div>`;
+});
+</script>
+</body>
+</html>

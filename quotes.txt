@@ -1,0 +1,298 @@
+# category|author|quote
+# g = get motivated, k = it'll be ok, w = timeless wisdom.
+# Each day shows one of each. Order is shuffled with a fixed seed on the server.
+g|James Clear|You do not rise to the level of your goals. You fall to the level of your systems.
+g|James Clear|Every action you take is a vote for the type of person you wish to become.
+g|James Clear|Habits are the compound interest of self-improvement.
+g|James Clear|Success is the product of daily habits, not once-in-a-lifetime transformations.
+g|James Clear|The most effective form of motivation is progress.
+g|James Clear|Missing once is an accident. Missing twice is the start of a new habit.
+g|James Clear|Professionals stick to the schedule; amateurs let life get in the way.
+g|James Clear|Goals are good for setting a direction, but systems are best for making progress.
+g|James Clear|The most practical way to change who you are is to change what you do.
+g|James Clear|You should be far more concerned with your current trajectory than with your current results.
+g|James Clear|A habit must be established before it can be improved.
+g|James Clear|Habits are not a finish line to be crossed. They are a lifestyle to be lived.
+g|James Clear|When you start a new habit, it should take less than two minutes to do.
+g|James Clear|The purpose of setting goals is to win the game. The purpose of building systems is to continue playing the game.
+g|James Clear|All big things come from small beginnings.
+g|James Clear|The seed of every habit is a single, tiny decision.
+g|James Clear|The greatest threat to success is not failure but boredom.
+g|James Clear|Some people spend their entire lives waiting for the time to be right to make an improvement.
+g|James Clear|You don't have to be the victim of your environment. You can also be the architect of it.
+g|James Clear|Your current habits are perfectly designed to deliver your current results.
+g|James Clear|The secret to getting results that last is to never stop making improvements.
+g|James Clear|Be the designer of your world and not merely the consumer of it.
+g|Martin Luther King Jr.|If you can't fly then run, if you can't run then walk, if you can't walk then crawl, but whatever you do you have to keep moving forward.
+g|Confucius|It does not matter how slowly you go as long as you do not stop.
+g|Theodore Roosevelt|Do what you can, with what you have, where you are.
+g|Theodore Roosevelt|Believe you can and you're halfway there.
+g|Henry Ford|Whether you think you can, or you think you can't, you're right.
+g|Confucius|The man who moves a mountain begins by carrying away small stones.
+g|Lao Tzu|A journey of a thousand miles begins with a single step.
+g|Japanese Proverb|Fall seven times, stand up eight.
+g|Arthur Ashe|Start where you are. Use what you have. Do what you can.
+g|Nelson Mandela|It always seems impossible until it's done.
+g|Muhammad Ali|Don't count the days. Make the days count.
+g|Muhammad Ali|I hated every minute of training, but I said, "Don't quit. Suffer now and live the rest of your life as a champion."
+g|Serena Williams|A champion is defined not by their wins, but by how they can recover when they fall.
+g|Jim Ryun|Motivation is what gets you started. Habit is what keeps you going.
+g|Will Durant|We are what we repeatedly do. Excellence, then, is not an act, but a habit.
+g|J.R.R. Tolkien|Little by little, one travels far.
+g|Vincent van Gogh|Great things are done by a series of small things brought together.
+g|Robert Collier|Success is the sum of small efforts, repeated day in and day out.
+g|Sam Levenson|Don't watch the clock; do what it does. Keep going.
+g|Chinese Proverb|The best time to plant a tree was 20 years ago. The second best time is now.
+g|Walter Elliot|Perseverance is not a long race; it is many short races one after the other.
+g|Michael Jordan|Obstacles don't have to stop you. If you run into a wall, don't turn around and give up. Figure out how to climb it, go through it, or work around it.
+g|Michael Jordan|You have to expect things of yourself before you can do them.
+g|Maya Angelou|Nothing will work unless you do.
+g|Audrey Hepburn|Nothing is impossible. The word itself says "I'm possible!"
+g|Samuel Beckett|Ever tried. Ever failed. No matter. Try again. Fail again. Fail better.
+g|Eleanor Roosevelt|You must do the thing you think you cannot do.
+g|Eleanor Roosevelt|With the new day comes new strength and new thoughts.
+g|Tony Robbins|It's not what we do once in a while that shapes our lives. It's what we do consistently.
+g|Tony Robbins|Where focus goes, energy flows.
+g|Tony Robbins|The only impossible journey is the one you never begin.
+g|Tony Robbins|Setting goals is the first step in turning the invisible into the visible.
+g|Brené Brown|You can choose courage, or you can choose comfort, but you cannot have both.
+g|Mel Robbins|You are one decision away from a totally different life.
+g|Zig Ziglar|People often say that motivation doesn't last. Well, neither does bathing. That's why we recommend it daily.
+g|Zig Ziglar|You don't have to be great to start, but you have to start to be great.
+g|Zig Ziglar|What you get by achieving your goals is not as important as what you become by achieving your goals.
+g|Jim Rohn|Discipline is the bridge between goals and accomplishment.
+g|Jim Rohn|Success is nothing more than a few simple disciplines, practiced every day.
+g|Jim Rohn|Either you run the day or the day runs you.
+g|Robin Sharma|Small daily improvements over time lead to stunning results.
+g|Robin Sharma|Change is hard at first, messy in the middle and gorgeous at the end.
+g|Simon Sinek|Dream big. Start small. But most of all, start.
+g|Napoleon Hill|Patience, persistence and perspiration make an unbeatable combination for success.
+g|Dale Carnegie|Inaction breeds doubt and fear. Action breeds confidence and courage.
+g|Stephen Covey|I am not a product of my circumstances. I am a product of my decisions.
+g|Brian Tracy|Successful people are simply those with successful habits.
+g|Dwayne Johnson|Success isn't always about greatness. It's about consistency. Consistent hard work leads to success. Greatness will come.
+g|Vince Lombardi|It's not whether you get knocked down, it's whether you get up.
+g|Babe Ruth|It's hard to beat a person who never gives up.
+g|Thomas Edison|Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.
+g|Walt Disney|The way to get started is to quit talking and begin doing.
+g|Amelia Earhart|The most difficult thing is the decision to act. The rest is merely tenacity.
+g|Helen Keller|Optimism is the faith that leads to achievement.
+g|Bruce Lee|Do not pray for an easy life. Pray for the strength to endure a difficult one.
+g|Rocky Balboa|It ain't about how hard you hit. It's about how hard you can get hit and keep moving forward.
+g|Dory, Finding Nemo|Just keep swimming.
+g|Yoda|Do. Or do not. There is no try.
+g|Buzz Lightyear|To infinity and beyond!
+g|Dr. Seuss|You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose.
+g|Steve Martin|Be so good they can't ignore you.
+g|Oprah Winfrey|Doing the best at this moment puts you in the best place for the next moment.
+g|Epictetus|First say to yourself what you would be; and then do what you have to do.
+g|Arnold Schwarzenegger|Strength does not come from winning. Your struggles develop your strengths.
+g|William James|Act as if what you do makes a difference. It does.
+g|Winston Churchill|If you're going through hell, keep going.
+g|Billie Jean King|Champions keep playing until they get it right.
+g|Jerry Rice|Today I will do what others won't, so tomorrow I can do what others can't.
+g|Wayne Gretzky|You miss 100% of the shots you don't take.
+g|Peter Drucker|The best way to predict the future is to create it.
+g|Aesop|Slow and steady wins the race.
+g|Abraham Lincoln (attributed)|I am a slow walker, but I never walk back.
+g|Mark Twain|Courage is resistance to fear, mastery of fear, not absence of fear.
+g|Tim Ferriss|What we fear doing most is usually what we most need to do.
+g|Carl, Up|Adventure is out there!
+g|Albert Einstein|Life is like riding a bicycle. To keep your balance, you must keep moving.
+g|Dolly Parton|Find out who you are and do it on purpose.
+k|James Clear|Breakthrough moments are often the result of many previous actions, which build up the potential required to unleash a major change.
+k|James Clear|Success is not a goal to reach or a finish line to cross. It is a system to improve, an endless process to refine.
+k|James Clear|If you're having trouble changing your habits, the problem isn't you. The problem is your system.
+k|James Clear|It is so easy to overestimate the importance of one defining moment and underestimate the value of making small improvements on a daily basis.
+k|James Clear|Time magnifies the margin between success and failure. It will multiply whatever you feed it.
+k|James Clear|When you fall in love with the process rather than the product, you don't have to wait to give yourself permission to be happy.
+k|Persian Adage|This too shall pass.
+k|Hal Borland|No winter lasts forever; no spring skips its turn.
+k|Albert Camus|In the midst of winter, I found there was, within me, an invincible summer.
+k|Anne Lamott|Almost everything will work again if you unplug it for a few minutes, including you.
+k|Lao Tzu|Nature does not hurry, yet everything is accomplished.
+k|Ralph Waldo Emerson|Adopt the pace of nature: her secret is patience.
+k|Jean-Jacques Rousseau|Patience is bitter, but its fruit is sweet.
+k|Rumi|The wound is the place where the Light enters you.
+k|Helen Keller|Although the world is full of suffering, it is also full of the overcoming of it.
+k|Helen Keller|A bend in the road is not the end of the road, unless you fail to make the turn.
+k|Walt Whitman|Keep your face always toward the sunshine, and shadows will fall behind you.
+k|Robert H. Schuller|Tough times never last, but tough people do.
+k|Fernando Sabino (often credited to John Lennon)|Everything will be all right in the end. If it's not all right, it's not yet the end.
+k|Vivian Greene|Life isn't about waiting for the storm to pass. It's about learning to dance in the rain.
+k|Sigmund Freud|One day, in retrospect, the years of struggle will strike you as the most beautiful.
+k|Desmond Tutu|Hope is being able to see that there is light despite all of the darkness.
+k|Victor Hugo|Even the darkest night will end and the sun will rise.
+k|Jon Kabat-Zinn|You can't stop the waves, but you can learn to surf.
+k|Thich Nhat Hanh|Smile, breathe and go slowly.
+k|Thich Nhat Hanh|No mud, no lotus.
+k|Martin Luther King Jr.|We must accept finite disappointment, but never lose infinite hope.
+k|Christopher Reeve|Once you choose hope, anything's possible.
+k|Emily Dickinson|"Hope" is the thing with feathers, that perches in the soul.
+k|Samwise Gamgee|There's some good in this world, Mr. Frodo, and it's worth fighting for.
+k|Gandalf|All we have to decide is what to do with the time that is given us.
+k|John Wooden|Don't let what you cannot do interfere with what you can do.
+k|John Wooden|Things turn out best for the people who make the best of the way things turn out.
+k|Hippocrates|Healing is a matter of time, but it is sometimes also a matter of opportunity.
+k|Voltaire|The art of medicine consists of amusing the patient while nature cures the disease.
+k|Hippocrates|Walking is man's best medicine.
+k|Proverbs 17:22|A cheerful heart is good medicine.
+k|Seneca|We suffer more often in imagination than in reality.
+k|Seneca|Difficulties strengthen the mind, as labor does the body.
+k|Marcus Aurelius|You have power over your mind, not outside events. Realize this, and you will find strength.
+k|Marcus Aurelius|Never let the future disturb you. You will meet it, if you have to, with the same weapons of reason which today arm you against the present.
+k|Marcus Aurelius|The impediment to action advances action. What stands in the way becomes the way.
+k|Epictetus|It's not what happens to you, but how you react to it that matters.
+k|Kahlil Gibran|Out of suffering have emerged the strongest souls; the most massive characters are seared with scars.
+k|Henry Ford|When everything seems to be going against you, remember that the airplane takes off against the wind, not with it.
+k|Robert Frost|The best way out is always through.
+k|Robert Frost|In three words I can sum up everything I've learned about life: it goes on.
+k|Charles R. Swindoll|Life is 10% what happens to us and 90% how we react to it.
+k|Corrie ten Boom|Worry does not empty tomorrow of its sorrow. It empties today of its strength.
+k|John C. Maxwell|Sometimes you win, sometimes you learn.
+k|Charles Dickens|The sun himself is weak when he first rises, and gathers strength and courage as the day gets on.
+k|Alice Morse Earle|Every day may not be good, but there's something good in every day.
+k|Louisa May Alcott|I am not afraid of storms, for I am learning how to sail my ship.
+k|Eleanor Roosevelt|You gain strength, courage, and confidence by every experience in which you really stop to look fear in the face.
+k|Norman Vincent Peale|It's always too early to quit.
+k|Molière|The greater the obstacle, the more glory in overcoming it.
+k|Winston Churchill|Kites rise highest against the wind, not with it.
+k|Japanese Proverb|The bamboo that bends is stronger than the oak that resists.
+k|Eleanor Brownn|Self-care is not selfish. You cannot serve from an empty vessel.
+k|Ovid|Take rest; a field that has rested gives a bountiful crop.
+k|John Lubbock|Rest is not idleness, and to lie sometimes on the grass under trees on a summer's day, listening to the murmur of the water, or watching the clouds float across the sky, is by no means a waste of time.
+k|Naomi Judd|Your body hears everything your mind says.
+k|Fred Rogers|Often when you think you're at the end of something, you're at the beginning of something else.
+k|Reinhold Niebuhr|Grant me the serenity to accept the things I cannot change, courage to change the things I can, and wisdom to know the difference.
+k|The Emperor, Mulan|The flower that blooms in adversity is the most rare and beautiful of all.
+k|Rafiki, The Lion King|Oh yes, the past can hurt. But the way I see it, you can either run from it, or learn from it.
+k|Fairy Godmother, Cinderella|Even miracles take a little time.
+k|Christopher Robin|You're braver than you believe, and stronger than you seem, and smarter than you think.
+k|Albus Dumbledore|Happiness can be found, even in the darkest of times, if one only remembers to turn on the light.
+k|Charles M. Schulz|Learn from yesterday, live for today, look to tomorrow, rest this afternoon.
+k|Bob Ross|We don't make mistakes, just happy little accidents.
+k|Frida Kahlo|Feet, what do I need you for when I have wings to fly?
+k|Stephen Hawking|However difficult life may seem, there is always something you can do and succeed at.
+k|Stephen Hawking|Remember to look up at the stars and not down at your feet.
+k|Michael J. Fox|My happiness grows in direct proportion to my acceptance, and in inverse proportion to my expectations.
+k|Viktor Frankl|When we are no longer able to change a situation, we are challenged to change ourselves.
+k|Friedrich Nietzsche|He who has a why to live can bear almost any how.
+k|Oscar Wilde|We are all in the gutter, but some of us are looking at the stars.
+k|Audrey Hepburn|To plant a garden is to believe in tomorrow.
+k|Warren Buffett|No matter how great the talent or efforts, some things just take time. You can't produce a baby in one month by getting nine women pregnant.
+k|Dolly Parton|If you want the rainbow, you gotta put up with the rain.
+k|Oprah Winfrey|Turn your wounds into wisdom.
+k|Napoleon Hill|Every adversity, every failure, every heartache carries with it the seed of an equal or greater benefit.
+k|Mary Anne Radmacher|Courage doesn't always roar. Sometimes courage is the quiet voice at the end of the day saying, "I will try again tomorrow."
+k|Oliver Goldsmith|Our greatest glory is not in never falling, but in rising every time we fall.
+k|Lena Horne|It's not the load that breaks you down, it's the way you carry it.
+k|J.K. Rowling|Rock bottom became the solid foundation on which I rebuilt my life.
+k|Morris Mandel|The darkest hour has only sixty minutes.
+k|Jean de La Bruyère|Out of difficulties grow miracles.
+k|Thomas Edison|I have not failed. I've just found 10,000 ways that won't work.
+k|English Proverb|A smooth sea never made a skilled sailor.
+k|Japanese Proverb|Even monkeys fall from trees.
+k|Proverb|Just when the caterpillar thought the world was over, it became a butterfly.
+k|Mariska Hargitay|Healing takes time, and asking for help is a courageous step.
+k|Ralph Marston|Rest when you're weary. Refresh and renew yourself, your body, your mind, your spirit. Then get back to work.
+k|William James|The greatest weapon against stress is our ability to choose one thought over another.
+k|Seneca|Time heals what reason cannot.
+w|James Clear|Habits do not restrict freedom. They create it.
+w|James Clear|Improvements are only temporary until they become part of who you are.
+w|James Clear|True behavior change is identity change.
+w|James Clear|Your outcomes are a lagging measure of your habits.
+w|James Clear|Environment is the invisible hand that shapes human behavior.
+w|James Clear|Winners and losers have the same goals.
+w|James Clear|The process of building habits is actually the process of becoming yourself.
+w|James Clear|The work that hurts you less than it hurts others is the work you were made to do.
+w|James Clear|In the long run, the quality of our lives often depends on the quality of our habits.
+w|James Clear|Your identity emerges out of your habits.
+w|James Clear|Standardize before you optimize. You can't improve a habit that doesn't exist.
+w|Annie Dillard|How we spend our days is, of course, how we spend our lives.
+w|Socrates|The unexamined life is not worth living.
+w|Aristotle|Knowing yourself is the beginning of all wisdom.
+w|Ian Maclaren|Be kind, for everyone you meet is fighting a hard battle.
+w|Confucius|Life is really simple, but we insist on making it complicated.
+w|Confucius|Wherever you go, go with all your heart.
+w|Dalai Lama|Happiness is not something ready made. It comes from your own actions.
+w|Dalai Lama|Be kind whenever possible. It is always possible.
+w|Theodore Roosevelt|Comparison is the thief of joy.
+w|Rumi|Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself.
+w|Rumi|What you seek is seeking you.
+w|Melody Beattie|Gratitude unlocks the fullness of life. It turns what we have into enough, and more.
+w|Cicero|Gratitude is not only the greatest of virtues, but the parent of all the others.
+w|Robert Brault|Enjoy the little things, for one day you may look back and realize they were the big things.
+w|Viktor Frankl|Everything can be taken from a man but one thing: the last of the human freedoms, to choose one's attitude in any given set of circumstances.
+w|J.R.R. Tolkien|Not all those who wander are lost.
+w|Benjamin Franklin|Well done is better than well said.
+w|Benjamin Franklin|An investment in knowledge pays the best interest.
+w|Benjamin Franklin|Energy and persistence conquer all things.
+w|Henry S. Haskins|What lies behind us and what lies before us are tiny matters compared to what lies within us.
+w|Albert Einstein|Imagination is more important than knowledge.
+w|Albert Einstein|The important thing is not to stop questioning. Curiosity has its own reason for existing.
+w|African Proverb|If you want to go fast, go alone. If you want to go far, go together.
+w|Zen Proverb|Before enlightenment, chop wood, carry water. After enlightenment, chop wood, carry water.
+w|Jim Elliot|Wherever you are, be all there.
+w|Thich Nhat Hanh|The present moment is filled with joy and happiness. If you are attentive, you will see it.
+w|Maya Angelou|You can't use up creativity. The more you use, the more you have.
+w|Maya Angelou|If you don't like something, change it. If you can't change it, change your attitude.
+w|Maya Angelou|Do the best you can until you know better. Then when you know better, do better.
+w|Seneca|Luck is what happens when preparation meets opportunity.
+w|Seneca|Begin at once to live, and count each separate day as a separate life.
+w|Seneca|As is a tale, so is life: not how long it is, but how good it is, is what matters.
+w|Seneca|It is not that we have a short time to live, but that we waste a lot of it.
+w|Marcus Aurelius|Waste no more time arguing about what a good man should be. Be one.
+w|Marcus Aurelius|Very little is needed to make a happy life; it is all within yourself, in your way of thinking.
+w|Marcus Aurelius|Dwell on the beauty of life. Watch the stars, and see yourself running with them.
+w|Marcus Aurelius|The happiness of your life depends upon the quality of your thoughts.
+w|Heraclitus|No man ever steps in the same river twice, for it's not the same river and he's not the same man.
+w|Epictetus|Wealth consists not in having great possessions, but in having few wants.
+w|Epictetus|He who laughs at himself never runs out of things to laugh at.
+w|Naval Ravikant|A calm mind, a fit body, and a house full of love. These things cannot be bought. They must be earned.
+w|Naval Ravikant|Desire is a contract you make with yourself to be unhappy until you get what you want.
+w|Naval Ravikant|Play long-term games with long-term people.
+w|Derek Sivers|If more information was the answer, then we'd all be billionaires with perfect abs.
+w|Tim Ferriss|A person's success in life can usually be measured by the number of uncomfortable conversations he or she is willing to have.
+w|Morgan Housel|Every job looks easy when you're not the one doing it.
+w|Mark Manson|Who you are is defined by what you're willing to struggle for.
+w|Eckhart Tolle|Realize deeply that the present moment is all you have.
+w|Ram Dass|We're all just walking each other home.
+w|Alan Watts|This is the real secret of life: to be completely engaged with what you are doing in the here and now.
+w|Alan Watts|The only way to make sense out of change is to plunge into it, move with it, and join the dance.
+w|Mary Oliver|Tell me, what is it you plan to do with your one wild and precious life?
+w|Kurt Vonnegut|I urge you to please notice when you are happy, and exclaim or murmur or think at some point, "If this isn't nice, I don't know what is."
+w|Anne Frank|How wonderful it is that nobody need wait a single moment before starting to improve the world.
+w|Charlie Munger|Spend each day trying to be a little wiser than you were when you woke up.
+w|Warren Buffett|Someone's sitting in the shade today because someone planted a tree a long time ago.
+w|Mark Twain|Humor is mankind's greatest blessing.
+w|Leonardo da Vinci|Learning never exhausts the mind.
+w|Lao Tzu|Knowing others is intelligence; knowing yourself is true wisdom.
+w|Lao Tzu|When I let go of what I am, I become what I might be.
+w|Henry David Thoreau|It's not what you look at that matters, it's what you see.
+w|Henry David Thoreau|Go confidently in the direction of your dreams. Live the life you have imagined.
+w|Aesop|No act of kindness, no matter how small, is ever wasted.
+w|Søren Kierkegaard|Life can only be understood backwards; but it must be lived forwards.
+w|Eleanor Roosevelt|Happiness is not a goal; it is a by-product of a life well lived.
+w|Charles M. Schulz|In the book of life, the answers aren't in the back.
+w|Ted Lasso|Be curious, not judgmental.
+w|Ferris Bueller|Life moves pretty fast. If you don't stop and look around once in a while, you could miss it.
+w|Jim Henson|Life's like a movie, write your own ending. Keep believing, keep pretending.
+w|Brené Brown|Owning our story and loving ourselves through that process is the bravest thing we'll ever do.
+w|Albert Schweitzer|Success is not the key to happiness. Happiness is the key to success.
+w|Wayne Dyer|If you change the way you look at things, the things you look at change.
+w|Norman Vincent Peale|Change your thoughts and you change your world.
+w|Oprah Winfrey|The more you praise and celebrate your life, the more there is in life to celebrate.
+w|Willie Nelson|Once you replace negative thoughts with positive ones, you'll start having positive results.
+w|Heraclitus|The only constant in life is change.
+w|Plutarch|What we achieve inwardly will change outer reality.
+w|Kahlil Gibran|Work is love made visible.
+w|Ralph Marston|What you do today can improve all your tomorrows.
+w|Haruki Murakami|Pain is inevitable. Suffering is optional.
+w|Mark Twain|Kindness is the language which the deaf can hear and the blind can see.
+w|Fred Rogers|Anything that's human is mentionable, and anything that is mentionable can be more manageable.
+w|Buddha|Three things cannot be long hidden: the sun, the moon, and the truth.
+w|Plato|Wise men speak because they have something to say; fools because they have to say something.
+w|Voltaire|Let us cultivate our garden.
+w|Aristotle|It is the mark of an educated mind to be able to entertain a thought without accepting it.
+k|Winnie the Pooh (A.A. Milne)|"What day is it?" "It's today," squeaked Piglet. "My favourite day," said Pooh.
+w|Leo Tolstoy|The two most powerful warriors are patience and time.

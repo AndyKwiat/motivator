@@ -1,0 +1,12 @@
+# Build without Xcode: zig provides both the host linker and the musl cross toolchain.
+[target.aarch64-apple-darwin]
+linker = "~/.local/bin/zcc-host"
+
+[target.x86_64-unknown-linux-musl]
+linker = "~/.local/bin/zcc-musl"
+rustflags = ["-C", "link-self-contained=no", "-C", "target-feature=+crt-static"]
+
+[env]
+CC_aarch64_apple_darwin = "~/.local/bin/zcc-host"
+CC_x86_64_unknown_linux_musl = "~/.local/bin/zcc-musl"
+AR_x86_64_unknown_linux_musl = "~/.local/bin/zar"
