@@ -271,13 +271,13 @@ mod tests {
     fn ack_req(day: i64, kind: &str) -> Request<Body> {
         Request::post("/api/ack")
             .header("content-type", "application/json")
-            .header("x-auth-email", "you@example.com")
+            .header("x-auth-email", "test@example.com")
             .body(Body::from(json!({"day": day, "kind": kind, "tz": 0}).to_string()))
             .unwrap()
     }
 
     fn state_req() -> Request<Body> {
-        Request::get("/api/state?tz=0").header("x-auth-email", "you@example.com").body(Body::empty()).unwrap()
+        Request::get("/api/state?tz=0").header("x-auth-email", "test@example.com").body(Body::empty()).unwrap()
     }
 
     #[test]
