@@ -2,3 +2,6 @@ target
 dist
 *.sqlite*
 .claude
+
+# Machine-specific toolchain paths; see .cargo/config.toml.example
+.cargo/config.toml

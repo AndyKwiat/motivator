@@ -1,0 +1,13 @@
+# Optional: copy to config.toml to build without Xcode and cross-compile for Linux (musl) with zig.
+# Expects zcc-host, zcc-musl and zar wrapper scripts on your PATH. Without this file, a plain `cargo build` works.
+[target.aarch64-apple-darwin]
+linker = "zcc-host"
+
+[target.x86_64-unknown-linux-musl]
+linker = "zcc-musl"
+rustflags = ["-C", "link-self-contained=no", "-C", "target-feature=+crt-static"]
+
+[env]
+CC_aarch64_apple_darwin = "zcc-host"
+CC_x86_64_unknown_linux_musl = "zcc-musl"
+AR_x86_64_unknown_linux_musl = "zar"
