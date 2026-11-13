@@ -37,9 +37,9 @@ stored under a single `local` user.
 cargo test
 ```
 
-`.cargo/config.toml` points at zig-based linkers for building without Xcode and for cross-compiling; drop or adjust
-it if you don't have those. `deploy.sh` builds a static Linux (musl) binary and ships it with
-[radify](https://github.com/AndyKwiat/radify).
+A plain `cargo build` works out of the box. To build without Xcode or cross-compile for Linux with zig, copy
+`.cargo/config.toml.example` to `.cargo/config.toml` (untracked). `deploy.sh` builds a static Linux (musl) binary and
+ships it with radify, a small self-hosted deploy tool.
 
 ## Tech
 
