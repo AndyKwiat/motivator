@@ -5,3 +5,4 @@ dist
 
 # Machine-specific toolchain paths; see .cargo/config.toml.example
 .cargo/config.toml
+.playwright-mcp
