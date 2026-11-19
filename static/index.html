@@ -121,6 +121,8 @@
   .stat span { font-size: 14px; font-weight: 600; }
   .stat:nth-child(1) { background: #d9f7f0; }
   .stat:nth-child(2) { background: #ffe1ea; }
+  .stat:nth-child(3) { background: #e8f8ff; }
+  .stat:nth-child(4) { background: #fff3b0; }
 
   /* ---------- day nav ---------- */
   .banner {
@@ -199,6 +201,26 @@
   .daypic { width: 110px; margin: -6px auto 14px; }
   .loading { text-align: center; padding: 80px 0; font-size: 26px; font-weight: 600; }
   .loading svg { width: 120px; margin: 0 auto 12px; animation: bob 1s ease-in-out infinite; }
+
+  /* ---------- physio ---------- */
+  .physio { background: #e8f8ff; text-align: center; }
+  .physio h3 { margin: 0; font-size: clamp(26px, 7vw, 34px); }
+  .physio p { margin: 6px 0 0; font-size: 19px; color: var(--muted); font-weight: 500; }
+  .pslots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0 4px; }
+  .pslot {
+    aspect-ratio: 1; border-radius: 50%; border: 4px dashed #9fb6c9; background: rgba(255,255,255,.7);
+    display: grid; place-items: center; font-size: 34px; font-weight: 700; color: #9fb6c9; padding: 10px;
+  }
+  .pslot.on { border: 4px solid var(--ink); background: var(--paper); color: var(--ink); box-shadow: 0 4px 0 var(--ink); }
+  .pslot.on svg { width: 100%; height: 100%; }
+  .pslot.next { border-color: var(--blue); color: var(--blue); animation: beat 1.4s ease-in-out infinite; }
+  .bigbtn.blue { background: var(--blue); color: var(--paper); }
+  .champ { background: linear-gradient(135deg, #fff3b0, #ffd1e3 60%, #d6ecff); text-align: center; overflow: hidden; }
+  .champ .trophy { width: 120px; margin: 0 auto; animation: bob 2s ease-in-out infinite; }
+  .champ h3 { margin: 6px 0 4px; font-size: clamp(28px, 7.5vw, 38px); }
+  .champ p { margin: 0; font-size: 19px; font-weight: 500; }
+  .dot .medal { position: absolute; right: -6px; bottom: -6px; font-size: 14px; line-height: 1; }
+  .dot { position: relative; }
 
   .confetti { position: fixed; pointer-events: none; z-index: 50; font-size: 26px; will-change: transform, opacity; }
 
@@ -338,6 +360,8 @@ const CATS = {
 const DAY_PICS = ['sun', 'star', 'icecream', 'dog', 'balloon', 'rainbow', 'sneaker'];
 const SLOTS = ['q0', 'q1', 'q2'];
 const ALL = [...SLOTS, 'grateful'];
+const PHYSIO = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'];
+const PHYSIO_ART = ['star', 'flame', 'heart', 'sneaker', 'owl', 'icecream'];
 
 // ---------- state ----------
 const tz = -new Date().getTimezoneOffset();
@@ -354,6 +378,7 @@ const pick = (arr, n) => arr[((n % arr.length) + arr.length) % arr.length];
 const dayObj = (n) => S.days[n - 1];
 const isDone = (d) => ALL.every((k) => d.acks[k]);
 const ackCount = (d) => ALL.filter((k) => d.acks[k]).length;
+const physioCount = (d) => PHYSIO.filter((k) => d.acks[k]).length;
 
 function firstUnfinished() {
   const d = S.days.find((d) => !isDone(d));
@@ -383,8 +408,14 @@ async function ack(kind, btn) {
     if (!r.ok) throw new Error(await r.text());
     const res = await r.json();
     const wasDone = isDone(d);
+    const wasPhysio = physioCount(d);
     d.acks = res.acks;
-    confetti(rect.left + rect.width / 2, rect.top + rect.height / 2, kind === 'grateful' ? ['💖', '💛', '🙏', '✨'] : ['⭐', '🎉', '✨', '💪']);
+    const isP = PHYSIO.includes(kind);
+    confetti(rect.left + rect.width / 2, rect.top + rect.height / 2, kind === 'grateful' ? ['💖', '💛', '🙏', '✨'] : isP ? ['💪', '⭐', '✨', '🦶'] : ['⭐', '🎉', '✨', '💪']);
+    if (isP && wasPhysio < 6 && physioCount(d) === 6) {
+      setTimeout(() => confetti(innerWidth / 2, innerHeight / 3, ['🏅', '💪', '🏆', '🥳', '🎉', '⭐'], 70), 250);
+      setTimeout(() => $('#champ')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
+    }
     renderDay(kind);
     renderTop();
     if (!wasDone && isDone(d)) {
@@ -452,9 +483,13 @@ function renderTop() {
 
   const read = S.days.reduce((n, d) => n + SLOTS.filter((k) => d.acks[k]).length, 0);
   const grateful = S.days.filter((d) => d.acks.grateful).length;
+  const physioDays = S.days.filter((d) => physioCount(d) === 6).length;
+  const physioTotal = S.days.reduce((n, d) => n + physioCount(d), 0);
   $('#stats').innerHTML = `
     <div class="stat"><b>${read}</b><span>📖<br>quotes read</span></div>
-    <div class="stat"><b>${grateful}</b><span>💖<br>grateful days</span></div>`;
+    <div class="stat"><b>${grateful}</b><span>💖<br>grateful days</span></div>
+    <div class="stat"><b>${physioTotal}</b><span>💪<br>physio sessions</span></div>
+    <div class="stat"><b>${physioDays}</b><span>🏅<br>perfect physio days</span></div>`;
 
   const behind = S.days.filter((d) => d.day < S.today && !isDone(d)).length;
   $('#banner').innerHTML = behind > 0 && view < S.today
@@ -477,7 +512,8 @@ function renderTop() {
     }
     if (n === total) { cls += ' goal'; label = '👟'; }
     if (n === view) cls += ' viewing';
-    cells += `<button class="dot ${cls}" ${n > S.today ? 'disabled' : ''} onclick="go(${n})" aria-label="Day ${n}">${label}</button>`;
+    const medal = n <= S.today && physioCount(dayObj(n)) === 6 ? '<span class="medal">🏅</span>' : '';
+    cells += `<button class="dot ${cls}" ${n > S.today ? 'disabled' : ''} onclick="go(${n})" aria-label="Day ${n}">${label}${medal}</button>`;
   }
   const doneDays = S.days.filter(isDone).length;
   $('#calendar').innerHTML = `
@@ -487,6 +523,7 @@ function renderTop() {
       <span><i style="background:var(--yellow)"></i>all done</span>
       <span><i style="background:linear-gradient(90deg,#bdf3e6 50%,#fff 50%)"></i>started</span>
       <span><i style="background:#ffe1ea"></i>waiting</span>
+      <span>🏅 6 physios</span>
       <span><i style="border-style:dashed;border-color:#c9c6dd"></i>locked</span>
     </div>`;
   tick();
@@ -522,6 +559,24 @@ function renderDay(justAcked) {
            <button class="bigbtn pink" onclick="ack('grateful', this)">🙏 I'm grateful</button>`}
     </section>`;
 
+  const pn = physioCount(d);
+  const nextP = PHYSIO.find((k) => !d.acks[k]);
+  const slots = PHYSIO.map((k, i) => d.acks[k]
+    ? `<div class="pslot on ${justAcked === k ? 'pop-in' : ''}" title="${esc(fmtWhen(d.acks[k]))}">${ART[PHYSIO_ART[i]]}</div>`
+    : `<div class="pslot ${k === nextP ? 'next' : ''}">${i + 1}</div>`).join('');
+  const physio = `
+    <section class="card physio">
+      <h3>Physio time! 💪</h3>
+      <p>${pn} of 6 done today</p>
+      <div class="pslots">${slots}</div>
+      ${nextP ? `<button class="bigbtn blue" onclick="ack('${nextP}', this)">✅ Done physio #${pn + 1}</button>` : ''}
+    </section>
+    ${pn === 6 ? `<section class="card champ ${justAcked === 'p6' ? 'pop-in' : ''}" id="champ">
+      <div class="trophy">${ART.trophy}</div>
+      <h3>PHYSIO CHAMP! 🏅</h3>
+      <p>All 6 physios done. Your ankle is proud of you!</p>
+    </section>` : ''}`;
+
   let complete = '';
   if (isDone(d)) {
     const nextOpen = S.days.find((x) => x.day > view && !isDone(x));
@@ -543,7 +598,7 @@ function renderDay(justAcked) {
 
   $('#day').innerHTML = `
     <div class="daypic">${ART[pick(DAY_PICS, view)]}</div>
-    ${finale}${quotes}${grateful}${complete}`;
+    ${finale}${physio}${quotes}${grateful}${complete}`;
   tick();
 }
 
