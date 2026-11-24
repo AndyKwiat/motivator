@@ -1,6 +1,7 @@
 //! Motivate: three quotes a day + an "I'm grateful" button, counting down to recovery day.
 //!
 //! Physio: six "done physio" taps per day (kinds p1..p6), stored like any other ack.
+//! Exercises: bird-dog, McGill crunch, side plank (kinds e1..e3), same deal.
 //!
 //! Env: PORT, DATA_DIR (sqlite lives there), STATIC_DIR, START_DATE / GOAL_DATE (YYYY-MM-DD).
 //! Identity comes from the gate's X-Auth-Email header. Days are numbered from 1 (START_DATE)
@@ -25,7 +26,7 @@ use std::{
 use tower_http::services::ServeDir;
 
 const QUOTES: &str = include_str!("../quotes.txt");
-const KINDS: [&str; 10] = ["q0", "q1", "q2", "grateful", "p1", "p2", "p3", "p4", "p5", "p6"];
+const KINDS: [&str; 13] = ["q0", "q1", "q2", "grateful", "p1", "p2", "p3", "p4", "p5", "p6", "e1", "e2", "e3"];
 
 #[derive(Serialize, Clone)]
 struct Quote {
@@ -333,6 +334,17 @@ mod tests {
         assert_eq!(call(&app, ack_req(2, "p7")).await.0, StatusCode::BAD_REQUEST);
         let (_, v) = call(&app, state_req()).await;
         assert_eq!(v["days"][1]["acks"].as_object().unwrap().len(), 6);
+    }
+
+    #[tokio::test]
+    async fn exercise_slots_e1_to_e3_only() {
+        let app = app_starting_days_ago(1);
+        for k in ["e1", "e2", "e3"] {
+            assert_eq!(call(&app, ack_req(2, k)).await.0, StatusCode::OK);
+        }
+        assert_eq!(call(&app, ack_req(2, "e4")).await.0, StatusCode::BAD_REQUEST);
+        let (_, v) = call(&app, state_req()).await;
+        assert_eq!(v["days"][1]["acks"].as_object().unwrap().len(), 3);
     }
 
     #[tokio::test]

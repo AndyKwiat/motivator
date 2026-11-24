@@ -215,6 +215,43 @@
   .pslot.on svg { width: 100%; height: 100%; }
   .pslot.next { border-color: var(--blue); color: var(--blue); animation: beat 1.4s ease-in-out infinite; }
   .bigbtn.blue { background: var(--blue); color: var(--paper); }
+
+  /* ---------- exercises ---------- */
+  .exercises { background: #fff4d6; }
+  .exercises h3 { margin: 0 0 14px; font-size: clamp(26px, 7vw, 34px); text-align: center; }
+  .ex {
+    display: flex; align-items: center; gap: 14px; width: 100%; margin: 0 0 14px; padding: 14px 16px;
+    border: var(--line); border-radius: 22px; background: var(--paper); box-shadow: 0 5px 0 var(--ink);
+    font-size: clamp(24px, 6.5vw, 30px); font-weight: 700; text-align: left; transition: transform .1s, box-shadow .1s;
+  }
+  .ex:last-child { margin-bottom: 0; }
+  button.ex:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--ink); }
+  .ex .box {
+    flex: none; width: 52px; height: 52px; border-radius: 16px; border: 4px solid var(--ink); background: var(--paper);
+    display: grid; place-items: center; font-size: 32px; color: var(--paper);
+  }
+  .ex.on { background: #d9f7f0; cursor: default; }
+  .ex.on .box { background: var(--teal); color: var(--ink); }
+  .ex small { display: block; font-size: 15px; font-weight: 500; color: var(--muted); }
+  .core { background: linear-gradient(135deg, #ffd23f, #ff8c42 55%, #ff5d8f); text-align: center; overflow: hidden; color: var(--ink); }
+  .core .burst { position: absolute; inset: -40%; opacity: .35; animation: spin 14s linear infinite; }
+  .core > *:not(.burst) { position: relative; }
+  .core .medal-art { width: 130px; margin: 0 auto; animation: bob 2s ease-in-out infinite; }
+  .core h3 { margin: 6px 0 0; font-size: clamp(34px, 9vw, 46px); color: var(--paper); -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; text-shadow: 0 4px 0 var(--ink); }
+
+  .payoff {
+    position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; background: rgba(255,255,255,.88);
+    animation: fadeout .5s ease-in 2.6s forwards; cursor: pointer;
+  }
+  .payoff .burst { position: absolute; width: 160vmax; height: 160vmax; animation: spin 6s linear infinite; }
+  .payoff .center { position: relative; text-align: center; animation: slam .7s cubic-bezier(.3,1.7,.5,1); }
+  .payoff .medal-art { width: min(60vw, 260px); margin: 0 auto; animation: bob 1.2s ease-in-out infinite; }
+  .payoff h2 {
+    margin: 8px 0 0; font-size: clamp(48px, 14vw, 84px); line-height: 1; color: var(--yellow);
+    -webkit-text-stroke: 5px var(--ink); paint-order: stroke fill; text-shadow: 0 7px 0 var(--ink);
+  }
+  @keyframes slam { from { transform: scale(3) rotate(-20deg); opacity: 0; } to { transform: none; opacity: 1; } }
+  @keyframes fadeout { to { opacity: 0; visibility: hidden; } }
   .champ { background: linear-gradient(135deg, #fff3b0, #ffd1e3 60%, #d6ecff); text-align: center; overflow: hidden; }
   .champ .trophy { width: 120px; margin: 0 auto; animation: bob 2s ease-in-out infinite; }
   .champ h3 { margin: 6px 0 4px; font-size: clamp(28px, 7.5vw, 38px); }
@@ -343,6 +380,20 @@ const ART = {
     <circle cx="31" cy="54" r="4" fill="${INK}"/><circle cx="49" cy="54" r="4" fill="${INK}"/>
     <path d="M32 64 Q40 72 48 64" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>
   </svg>`,
+  medal: `<svg viewBox="0 0 120 150" aria-hidden="true">
+    <path d="M30 4 H56 L72 58 H46 Z" fill="#4d9de0" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M90 4 H64 L48 58 H74 Z" fill="#ff5d8f" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="60" cy="96" r="46" fill="#ffd23f" stroke="${INK}" stroke-width="6"/>
+    <circle cx="60" cy="96" r="34" fill="none" stroke="#ffb703" stroke-width="5" stroke-dasharray="6 7"/>
+    <path d="M28 76 Q34 62 48 58" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="47" cy="92" r="6" fill="${INK}"/><circle cx="73" cy="92" r="6" fill="${INK}"/>
+    <circle cx="49" cy="90" r="2" fill="#fff"/><circle cx="75" cy="90" r="2" fill="#fff"/>
+    <ellipse cx="38" cy="106" rx="7" ry="4" fill="#ffadc6"/><ellipse cx="82" cy="106" rx="7" ry="4" fill="#ffadc6"/>
+    <path d="M46 106 Q60 122 74 106 Z" fill="#ff5d8f" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>
+  </svg>`,
+  burst: `<svg viewBox="-100 -100 200 200" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+    ${Array.from({length: 16}, (_, i) => `<path d="M0 0 L-9 -100 L9 -100 Z" fill="${['#ffd23f', '#ff5d8f', '#2ec4a6', '#4d9de0'][i % 4]}" transform="rotate(${i * 22.5})"/>`).join('')}
+  </svg>`,
   trophy: `<svg viewBox="0 0 100 110" aria-hidden="true">
     <path d="M26 20 H10 Q8 46 32 50 M74 20 H90 Q92 46 68 50" fill="none" stroke="${INK}" stroke-width="5"/>
     <path d="M24 10 H76 V36 Q76 64 50 66 Q24 64 24 36 Z" fill="#ffd23f" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
@@ -362,6 +413,7 @@ const SLOTS = ['q0', 'q1', 'q2'];
 const ALL = [...SLOTS, 'grateful'];
 const PHYSIO = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'];
 const PHYSIO_ART = ['star', 'flame', 'heart', 'sneaker', 'owl', 'icecream'];
+const EXERCISES = [['e1', 'Bird-dog'], ['e2', 'McGill crunch'], ['e3', 'Side plank']];
 
 // ---------- state ----------
 const tz = -new Date().getTimezoneOffset();
@@ -379,6 +431,7 @@ const dayObj = (n) => S.days[n - 1];
 const isDone = (d) => ALL.every((k) => d.acks[k]);
 const ackCount = (d) => ALL.filter((k) => d.acks[k]).length;
 const physioCount = (d) => PHYSIO.filter((k) => d.acks[k]).length;
+const exCount = (d) => EXERCISES.filter(([k]) => d.acks[k]).length;
 
 function firstUnfinished() {
   const d = S.days.find((d) => !isDone(d));
@@ -409,6 +462,7 @@ async function ack(kind, btn) {
     const res = await r.json();
     const wasDone = isDone(d);
     const wasPhysio = physioCount(d);
+    const wasEx = exCount(d);
     d.acks = res.acks;
     const isP = PHYSIO.includes(kind);
     confetti(rect.left + rect.width / 2, rect.top + rect.height / 2, kind === 'grateful' ? ['💖', '💛', '🙏', '✨'] : isP ? ['💪', '⭐', '✨', '🦶'] : ['⭐', '🎉', '✨', '💪']);
@@ -418,6 +472,7 @@ async function ack(kind, btn) {
     }
     renderDay(kind);
     renderTop();
+    if (wasEx < 3 && exCount(d) === 3) corePayoff();
     if (!wasDone && isDone(d)) {
       setTimeout(() => { confetti(innerWidth / 2, innerHeight / 3, ['🎉', '🏆', '⭐', '🥳', '👟'], 60); }, 250);
       setTimeout(() => $('#complete')?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
@@ -577,6 +632,21 @@ function renderDay(justAcked) {
       <p>All 6 physios done. Your ankle is proud of you!</p>
     </section>` : ''}`;
 
+  const exAllDone = exCount(d) === 3;
+  const exRows = EXERCISES.map(([k, name]) => d.acks[k]
+    ? `<div class="ex on ${justAcked === k ? 'pop-in' : ''}"><span class="box">✓</span><span>${name}<small>${fmtWhen(d.acks[k])}</small></span></div>`
+    : `<button class="ex" onclick="ack('${k}', this)"><span class="box"></span><span>${name}</span></button>`).join('');
+  const exercises = `
+    <section class="card exercises">
+      <h3>Exercises 🏋️</h3>
+      ${exRows}
+    </section>
+    ${exAllDone ? `<section class="card core ${EXERCISES.some(([k]) => k === justAcked) ? 'pop-in' : ''}" id="core">
+      <div class="burst">${ART.burst}</div>
+      <div class="medal-art">${ART.medal}</div>
+      <h3>CORE DONE!</h3>
+    </section>` : ''}`;
+
   let complete = '';
   if (isDone(d)) {
     const nextOpen = S.days.find((x) => x.day > view && !isDone(x));
@@ -598,7 +668,7 @@ function renderDay(justAcked) {
 
   $('#day').innerHTML = `
     <div class="daypic">${ART[pick(DAY_PICS, view)]}</div>
-    ${finale}${physio}${quotes}${grateful}${complete}`;
+    ${finale}${physio}${exercises}${quotes}${grateful}${complete}`;
   tick();
 }
 
@@ -627,6 +697,20 @@ function tick() {
     tick.reloading = true;
     load().finally(() => { tick.reloading = false; });
   }
+}
+
+function corePayoff() {
+  const el = document.createElement('div');
+  el.className = 'payoff';
+  el.innerHTML = `<div class="burst">${ART.burst}</div><div class="center"><div class="medal-art">${ART.medal}</div><h2>CORE DONE!</h2></div>`;
+  const close = () => { el.remove(); $('#core')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+  el.onclick = close;
+  el.addEventListener('animationend', (e) => { if (e.animationName === 'fadeout') close(); });
+  document.body.appendChild(el);
+  const burst = (x, y) => confetti(x, y, ['💪', '🏋️', '🥇', '⭐', '🎉', '🔥'], 40);
+  burst(innerWidth / 2, innerHeight / 2);
+  setTimeout(() => { burst(innerWidth * .2, innerHeight * .3); burst(innerWidth * .8, innerHeight * .3); }, 350);
+  setTimeout(() => { burst(innerWidth * .3, innerHeight * .75); burst(innerWidth * .7, innerHeight * .75); }, 700);
 }
 
 function confetti(x, y, chars, n = 22) {
